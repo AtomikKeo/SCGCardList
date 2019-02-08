@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <title>SCGCardList</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/marx/2.0.4/marx.css">
+    <script type = "text/javascript" src = "card.js"></script>
 </head>
-<body>
+<body onload="OnSearch();">
     <main>
-    <h1>今日のカードゲーム；カードリスト</h1>
-    </main>
+    <h1>今日のカードゲーム</h1>
+    <input type="text" name="word" id="word" tab-index="1" placeholder="検索ワード" autocomplete=off onkeypress="OnSearch();"></input>
+    <input type="submit" value="検索" onclick="OnSearch();"/>
+    <div id="result"></div>
 
-    <script type = "text/javascript" src = "card.js">
-    </script>
+    </main>
 </body>
 </html>

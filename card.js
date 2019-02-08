@@ -6,6 +6,10 @@ class Card{
         this.text = text;
         this.effect = effect;
     }
+    
+    ToString(){
+        return this.name+","+this.kana+","+this.attr+","+this.text+","+this.effect;
+    }
 }
 
 class MonsterCard extends Card{
@@ -14,6 +18,9 @@ class MonsterCard extends Card{
         this.atk = atk;
         this.def = def;
     }
+    ToString(){
+        return super.ToString()+","+this.atk+","+this.def;
+    }
 }
 
 var cards = [new Card("疎開", "そかい", "急", "ここどこ", "1回休み"),
@@ -21,8 +28,15 @@ var cards = [new Card("疎開", "そかい", "急", "ここどこ", "1回休み"
              new MonsterCard("機械仕掛けの死神", "きかいじかけのしにがみ", "神", "AI国家が生んだ死刑執行人\nロボットがロボットを監視する社会で危険思想を見つけ、排除する。", "自分の場のモンスターすべてを破壊し召喚\n場のすべてのモンスターの効果を消滅させる", 6666, 6666)
             ];
 
-document.write("<ul>");
-cards.forEach(card => {
-    document.write("<li>" + card.name + "</li>");
-});
-document.write("</ul>");
+function OnSearch(){
+    word = document.getElementById("word").value;
+    result = document.getElementById("result");
+    result.innerHTML = "<ul>";
+    cards.forEach(card => {
+        if(card.ToString().match(word)){
+            result.innerHTML += ("<img src=images/" + card.name + ".png width=195 height=270> ");
+        }
+    });
+    result.innerHTML += "</ul>";
+    document.getElementById("word").focus();
+}
