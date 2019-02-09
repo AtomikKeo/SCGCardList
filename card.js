@@ -194,7 +194,7 @@ function OnSearch(){
         if(isSpell === false && card.ToType() === "Card") continue;
         if(checkedAuthors.indexOf(card.author) == -1) continue;        
         if(card.ToString().match(word)){
-            result.innerHTML += ("<img src=images/" + card.name + ".png width=195 height=270 class=card> ");
+            result.innerHTML += `<a href="images/${card.name}.png" data-lightbox="cards" windowWidth=520 windowHeight=720><img src="images/${card.name}.png" width=195 height=270 class=card></a> `;
         }
     }
     result.innerHTML += "</ul>";
