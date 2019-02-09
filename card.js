@@ -163,7 +163,7 @@ function checkAll(value){
 function OnSearch(){
     word = document.getElementById("word").value;
     param = document.getElementById("orderParam").value;
-    order = document.getElementById("order").value;
+    order = document.getElementById("ordercb").checked;
     isMonster = document.getElementById("isMonster").checked;
     isSpell = document.getElementById("isSpell").checked;
     checkedAuthors = [];
@@ -189,7 +189,7 @@ function OnSearch(){
     }
     for(var i=0;i<cards.length;i++){
         var idx;
-        if(order === "desc"){
+        if(order){
             idx = cards.length - (i + 1);
         }else{
             idx = i;
@@ -221,7 +221,7 @@ function CreateAuthorsBox(){
     });
     for(var i=0;i<keys.length;i++){
         author = keys[i];
-        var html = `<label><input type="checkbox" id="${author}" checked="checkbox" onchange="OnSearch();">${author}(${authors[author]})</label>`;
+        var html = `<input type="checkbox" id="${author}" checked=true onchange="OnSearch();"><label for="${author}">${author}(${authors[author]})</label>`;
         authorsDiv.innerHTML += html;
     }
 }

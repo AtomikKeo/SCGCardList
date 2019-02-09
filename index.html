@@ -25,25 +25,26 @@
     <input type="text" name="word" id="word" tab-index="1" placeholder="検索ワード" autocomplete=off onkeypress="OnSearch();"></input>
     <input type="submit" value="検索" onclick="OnSearch();document.getElementById('word').focus();
     "/>
-    <select name="orderParam" id="orderParam">
+    <select name="orderParam" id="orderParam" onchange="OnSearch();">
         <option value="name">名前順</option>
         <option value="atk">ATK順</option>
         <option value="def">DEF順</label>
     </select>
-    <select name="order" id="order">
-        <option value="asc">昇順</option>
-        <option value="desc">降順</option>
-    </select>
+    <span class="ordercb">
+            <input type="checkbox" name="ordercb" id="ordercb" checked="checkbox" onchange="OnSearch();"><label for="ordercb"></label>
+    </span>
     </p>
     <p>
-    <label><input type="checkbox" name="isMonster" id="isMonster" checked="checkbox" onchange="OnSearch();">モンスターを表示</label>
-    <label><input type="checkbox" name="isSpell" id="isSpell" checked="checked" onchange="OnSearch();">魔法カードを表示</label>
+    <div class="cb">
+        <input type="checkbox" name="isMonster" id="isMonster" checked="checkbox" onchange="OnSearch();"><label for="isMonster">モンスターを表示</label>
+        <input type="checkbox" name="isSpell" id="isSpell" checked="checked" onchange="OnSearch();"><label for="isSpell">魔法カードを表示</label>
+    </div>
     </p>
     <fieldset>
         <legend>作者</legend>
         <input type="submit" value="全てチェック" onclick="checkAll(true);OnSearch()"/>
         <input type="submit" value="全てチェック解除" onclick="checkAll(false);OnSearch()"/>
-        <div id="authors"></div>
+        <div id="authors" class="cb"></div>
         </fieldset>
     <div id="result" class=center></div>
 

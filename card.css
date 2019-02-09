@@ -1,5 +1,7 @@
-label, input[type="checkbox"] {
-    border: 1px solid #999;
+.cb{
+    user-select: none;
+}
+.cb label, input[type="checkbox"] {
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
@@ -7,8 +9,64 @@ label, input[type="checkbox"] {
     cursor: pointer;
 }
 
+.cb input[type="checkbox"]{
+    display: none;
+}
+
+.cb label:hover{
+    color:#d45;
+}
+
+.cb input:checked + label{
+    background-color: #d45;
+    color:white;
+}
+
+.cb label{
+	-webkit-transition: 0.25s all ease;
+	        transition: 0.25s all ease;
+}
+
+.ordercb{
+    display: inline;
+    user-select: none;
+}
+
+.ordercb label:before{
+    background-color:#d45;
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    display: inline-block;
+    cursor: pointer;
+    content: "▲";
+}
+
+.ordercb input:checked + label:before{
+    content: "▼";
+
+}
+
+.ordercb input[type="checkbox"]{
+    display: none;
+}
+
 main{
     max-width: 1050px;
+}
+
+main input[type="text"], select{
+    display: inline-block;
+    padding: 10px;
+}
+
+main select{
+    background-color: #d45;
+    color:white;
 }
 
 .title{
@@ -18,7 +76,7 @@ main{
 
 .card {
     transition-duration: 0.3s; /*変化の時間*/
-    }
+}
     .card:hover {
     transform: scale(1.5,1.5); /*画像の拡大*/
     cursor: pointer; /*カーソルをポインターにする*/
