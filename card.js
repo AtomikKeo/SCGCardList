@@ -10,6 +10,11 @@ class Card{
     ToString(){
         return this.name+","+this.kana+","+this.attr+","+this.text+","+this.effect;
     }
+
+    ToType(){
+        return "Card";
+    }
+
 }
 
 class MonsterCard extends Card{
@@ -21,12 +26,16 @@ class MonsterCard extends Card{
     ToString(){
         return super.ToString()+","+this.atk+","+this.def;
     }
+
+    ToType(){
+        return "MonsterCard";
+    }
 }
 
 var cards = [new MonsterCard("BRAIN_HACKER","ぶれいんはっかー","侵","チキュウ　ノ　カンキョウ　ニ　テキオウ　スルタメ　チキュウジン　ノ　トウブ　ヲ　ウチュウフク　ノ　カワリニ　シテイル　ホームシックギミ","",2200,1200),
-            new MonsterCard("DA_PAND","よ～み～か～た～熊猫　ぱんだじゃなくてくまねこ　U・U・U・E・N！U・U・U・E・N！","このカードは「パンダ」として扱うこともできるが、「パンダ」として扱わないこともできる　歌って踊ってる間は攻撃力、防御力が倍になる。",2018,2018),
+            new MonsterCard("DA_PAND","だぱんだ","A","よ～み～か～た～熊猫　ぱんだじゃなくてくまねこ　U・U・U・E・N！U・U・U・E・N！","このカードは「パンダ」として扱うこともできるが、「パンダ」として扱わないこともできる　歌って踊ってる間は攻撃力、防御力が倍になる。",2018,2018),
             new Card("SANDO_of_Food","さんどおぶふーど","食","いわゆる三度の飯　好きなものの踏み台にされるかわいそうな奴　現代人の生活リズムの変化により、三度というアイデンティティの喪失の危機に陥っている","手札を３枚捨てる。　そのあと墓地から好きなモンスター一体を手札に加える"),
-            new Card("S・Sプレイ","エスエスプレイ","攻","どちらもSなのでどちらかが折れるまで何も始まらない。　鞭で互いを叩き続け両方次第にMに目覚めていく。　そしてまた何も始まらない。","このカードが使われたターンでは場に出している全モンスターは攻撃をしなければならない"),
+            new Card("S・Sプレイ","えすえすぷれい","攻","どちらもSなのでどちらかが折れるまで何も始まらない。　鞭で互いを叩き続け両方次第にMに目覚めていく。　そしてまた何も始まらない。","このカードが使われたターンでは場に出している全モンスターは攻撃をしなければならない"),
             new MonsterCard("いにしえドラゴン","いにしえどらごん","竜","太古から生きるドラゴン。　神龍とタメであることを自慢するが、いざ神龍を前にすると恐縮する。","",1800,2000),
             new MonsterCard("うまドラゴン","うまどらごん","竜","馬とドラゴンの交配種　空をとぶより、芝を走るのが好き。というかとべない。","",2700,1500),
             new Card("きのうのジャー","きのうのじゃー","食","昨日洗い忘れたジャー。　今日の主食はパンよ","相手のDEF-1000"),
@@ -66,7 +75,7 @@ var cards = [new MonsterCard("BRAIN_HACKER","ぶれいんはっかー","侵","�
             new Card("全力クラウチングスタート","ぜんりょくくらうちんぐすたーと","走","無理のある体勢により、アキレス腱がちぎれ飛ぶ程初速に命を懸ける技。なおその後は激痛によりまともに走ることができない。","モンスター1体に先制を付与"),
             new MonsterCard("六手の奏","ろってのそう","爽","分類はラクトアイス。濃厚な立ち回りやシャリシャリとした剣捌きは他の追随を許さない。言うまでもなく弱点は熱","",3500,126),
             new Card("南風と月","みなみかぜとつき","話","みんな仲良し。ちょっと肌寒いね。明日も元気に頑張ろう！","お互いの手札を5枚にする。　フィールドのカードを全て公開し、守備表示にする。"),
-            new MonsterCard("双子島の氷剣","ふたごじまのひょうけん","氷","かつて、島は1つだった。勇者が島を訪れ地面に刺さっていた剣を引き抜くと島が1つ増えた。剣の身にはあたりと書いてあった。","氷状態にし、1000ダメージ"),
+            new Card("双子島の氷剣","ふたごじまのひょうけん","氷","かつて、島は1つだった。勇者が島を訪れ地面に刺さっていた剣を引き抜くと島が1つ増えた。剣の身にはあたりと書いてあった。","氷状態にし、1000ダメージ"),
             new Card("咄嗟に内蔵を開けて弾を避ける技","とっさにないぞうをあけてたまをさけるわざ","柔","緊急時、弓・弾丸などの遠距離武器を撃ち込まれた場合にそれを避けるための技。発動時、肋骨が4、5本やられる。","１ターン、敵からの攻撃を無効化"),
             new Card("変身！！","へんしん","魔","それは子供の永遠の憧れであり　拗らせた大人を戻れなくさせる枷","プレイヤーは変身する。返信が完了するまでに満たした条件によって以下の効果を発動する。・10秒以内に変身が完了した：自分のライフポイントを2倍にする。　・専用BGMが流れた：墓地からモンスター1体特殊召喚する。　・衣服の80％以上が変化した：手札からモンスターを1体特殊召喚する。　・名乗り口上を言った：自分モンスターの攻撃力は2倍になる。　・キメポーズ時に背景で爆発が起こった：自分モンスターは効果を受けない。　・相手プレイヤーも変身した：相手はゲームに勝利する。　・変身できなかった：プレイヤーは敗北する。"),
             new MonsterCard("実家で育ててるミニトマト","じっかでそだててるみにとまと","摘","手軽につまみ食いできるほうが悪い。","プレイヤーはカードを一枚引く。対戦相手はプレイヤーが目を離している隙に自身のデッキから一枚多くカードを引いてもよい。ただしそれがバレた場合そのカードを元に戻す。",1200,50),
@@ -91,7 +100,7 @@ var cards = [new MonsterCard("BRAIN_HACKER","ぶれいんはっかー","侵","�
             new MonsterCard("究極龍","きゅうきょくろん","竜","地球というボールを元に出現した極龍。全人類を1人にするか5000兆人にするか悩んでいる。","極龍が破壊されたとき、手札から特殊召喚できる。デッキ1枚を残し、他のカード全てを手札に加え、自分のターン終了時ゲームに敗北する。",1,99999),
             new Card("突発牛肉","とっぱつぎゅうにく","食","いきなり、ステーキである。","このカードをドローした瞬間に相手カードを1枚指定し破壊"),
             new Card("精霊召喚","せいれいしょうかん","召","天界から精霊を召喚する。精霊が出てくるオーラでプレイしてる机がバッてなってカードがぐちゃぐちゃになる。精霊は罪悪感で死ぬ。","手札を全て捨て、山札から同じ枚数引き直す"),
-            new MonsterCard("腐鎌","くさりがま","腐","その昔、ある村の武装農民が鎖鎌をじめじめした風通しの悪い所へとばしてしまったまま千年の時をへて、今の姿で発見された。","毒状態にし1000ダメージ"),
+            new Card("腐鎌","くさりがま","腐","その昔、ある村の武装農民が鎖鎌をじめじめした風通しの悪い所へとばしてしまったまま千年の時をへて、今の姿で発見された。","毒状態にし1000ダメージ"),
             new Card("薬草ジュース","やくそうじゅーす","癒","7種の薬草を配合して作られたジュース。スパイスが効いていて意外に美味しい。でも最近出てる0カロリーとかトクホのやつはあんまり美味しくない。","モンスター1体の体力を1200回復"),
             new Card("試作プロトマシンレイメイ・α(ver.0)","しさくぷろとましんれいめいあるふぁばーじょんぜろ","仮","何かはよくわからないがめちゃくちゃ初期に作られたんだろうなって感じのマシン。それ系の博物館だと大方最初のフロアに置いてある。何系かはわからない。","ゲーム開始時このカードが手札にあると、先攻＆行動回数+1"),
             new Card("豆まき","まめまき","豆","しびれを切らした鬼たちの逆襲である。その威力は棍棒による攻撃をこえる。","相手の全モンスターに1000ダメージ"),
@@ -103,17 +112,78 @@ var cards = [new MonsterCard("BRAIN_HACKER","ぶれいんはっかー","侵","�
             new MonsterCard("運命神・コイントス","うんめいしんこいんとす","神","迷える子羊にコインの導きを。日に700億回もコインをトスする。コインには自分の顔を刻んでいる。","他のカードを裏返す",2000,2000),
             new MonsterCard("高圧的洗浄機","こうあつてきせんじょうき","圧","ブラックな環境で生み出されてしまった洗浄機　買ってもらわないと困るんだよね　こっちも仕事でやってんだわ","このカードが場にある限り　相手はカードを3枚以上出せない",1200, 800),
             new Card("魔法の杖・カステラ","まほうのつえかすてら","魔","魔法を発動する際に使う杖。初心者でも扱いやすいモデルだが、高度な魔法を使うには安定しない。単三電池を2本使用。","手札のコスト3以下の魔法カードをランダムに発動。"),
-            ];
+            new MonsterCard("パンチ星野","ぱんちほしの","拳","心で見なきゃ、ものごとはよく見えない。大切なことは、目に見えないんだよ。(サン＝テグジュペリ『星の王子さま』より)", "HPが最大であるとき、攻撃が確殺になる。", 1900,3910)
+        ];
+
+function SetATKOrder(card1, card2){
+    var atk1 = (typeof card1.atk === "undefined" ? 0 : card1.atk);
+    var atk2 = (typeof card2.atk === "undefined" ? 0 : card2.atk);
+    if(atk1<atk2) return -1;
+    if(atk1>atk2) return 1;
+    return 0;
+}
+
+function SetDEFOrder(card1, card2){
+    var def1 = (typeof card1.def === "undefined" ? 0 : card1.def);
+    var def2 = (typeof card2.def === "undefined" ? 0 : card2.def);
+    if(def1<def2) return -1;
+    if(def1>def2) return 1;
+    return 0;
+}
+
+function SetNameOrder(card1, card2){
+    var name1 = card1.kana;
+    var name2 = card2.kana;
+    if(name1<name2) return -1;
+    if(name1>name2) return 1;
+    return 0;
+}
+
+function SetAttrOrder(card1, card2){
+    var attr1 = card1.attr;
+    var attr2 = card2.attr;
+    if(attr1<attr2) return -1;
+    if(attr1>attr2) return 1;
+    return 0;
+}
 
 function OnSearch(){
     word = document.getElementById("word").value;
+    param = document.getElementById("orderParam").value;
+    order = document.getElementById("order").value;
+    isMonster = document.getElementById("isMonster").checked;
+    isSpell = document.getElementById("isSpell").checked;
     result = document.getElementById("result");
     result.innerHTML = "<ul>";
-    cards.forEach(card => {
+    switch (param){
+        case "name":
+            cards.sort(SetNameOrder);
+            break;
+        case "atk":
+            cards.sort(SetATKOrder);
+            break;
+        case "def":
+            cards.sort(SetDEFOrder);
+            break;
+        default:
+            cards.sort();
+            break;
+    }
+    for(var i=0;i<cards.length;i++){
+        var idx;
+        if(order === "desc"){
+            idx = cards.length - (i + 1);
+        }else{
+            idx = i;
+        }
+        var card = cards[idx];
+        if(isMonster === false && card.ToType() === "MonsterCard") continue;
+        if(isSpell === false && card.ToType() === "Card") continue;
+        
         if(card.ToString().match(word)){
             result.innerHTML += ("<img src=images/" + card.name + ".png width=195 height=270> ");
         }
-    });
+    }
     result.innerHTML += "</ul>";
     document.getElementById("word").focus();
 }
