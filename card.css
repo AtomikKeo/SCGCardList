@@ -11,6 +11,11 @@ main{
     max-width: 1050px;
 }
 
+.title{
+    font-size: 14pt;
+    line-height : 20px;
+}
+
 .card {
     transition-duration: 0.3s; /*変化の時間*/
     }

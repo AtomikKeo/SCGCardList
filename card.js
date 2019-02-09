@@ -17,6 +17,10 @@ class Card{
         return "Card";
     }
 
+    display(){
+        return `<p class='title'>名前：${this.name}</br>読み：${this.kana}</br>作者：${this.author}</p>`;
+    }
+
 }
 
 class MonsterCard extends Card{
@@ -195,7 +199,7 @@ function OnSearch(){
         if(isSpell === false && card.ToType() === "Card") continue;
         if(checkedAuthors.indexOf(card.author) == -1) continue;        
         if(card.ToString().match(word)){
-            result.innerHTML += `<a href="images/${card.name}.png" data-lightbox="cards" windowWidth=520 windowHeight=720><img src="images/${card.name}.png" width=195 height=270 class=card></a> `;
+            result.innerHTML += `<a href="images/${card.name}.png" data-lightbox="cards" title="${card.display()}"><img src="images/${card.name}.png" width=195 height=270 class=card></a> `;
         }
     }
     result.innerHTML += "</ul>";
