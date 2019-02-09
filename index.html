@@ -23,7 +23,8 @@
     <h1>今日のカードゲーム</h1>
     <p>
     <input type="text" name="word" id="word" tab-index="1" placeholder="検索ワード" autocomplete=off onkeypress="OnSearch();"></input>
-    <input type="submit" value="検索" onclick="OnSearch();"/>
+    <input type="submit" value="検索" onclick="OnSearch();document.getElementById('word').focus();
+    "/>
     <select name="orderParam" id="orderParam">
         <option value="name">名前順</option>
         <option value="atk">ATK順</option>
