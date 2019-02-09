@@ -1,5 +1,14 @@
 label, input[type="checkbox"] {
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
     cursor: pointer;
+}
+
+main{
+    max-width: 1050px;
 }
 
 .card {

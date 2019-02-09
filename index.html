@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="card.css">
     <script type = "text/javascript" src = "card.js"></script>
 </head>
-<body onload="OnSearch();">
+<body onload="CreateAuthorsBox();OnSearch()">
     <main>
     <h1>今日のカードゲーム</h1>
     <p>
@@ -25,9 +25,14 @@
     </p>
     <p>
     <label><input type="checkbox" name="isMonster" id="isMonster" checked="checkbox" onchange="OnSearch();">モンスターを表示</label>
-    <br>
     <label><input type="checkbox" name="isSpell" id="isSpell" checked="checked" onchange="OnSearch();">魔法カードを表示</label>
     </p>
+    <fieldset>
+        <legend>作者</legend>
+        <input type="submit" value="全てチェック" onclick="checkAll(true);OnSearch()"/>
+        <input type="submit" value="全てチェック解除" onclick="checkAll(false);OnSearch()"/>
+        <div id="authors"></div>
+        </fieldset>
     <div id="result" class=center></div>
 
     </main>
