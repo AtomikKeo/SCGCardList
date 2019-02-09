@@ -181,7 +181,7 @@ function OnSearch(){
         if(isSpell === false && card.ToType() === "Card") continue;
         
         if(card.ToString().match(word)){
-            result.innerHTML += ("<img src=images/" + card.name + ".png width=195 height=270> ");
+            result.innerHTML += ("<img src=images/" + card.name + ".png width=195 height=270 class=card> ");
         }
     }
     result.innerHTML += "</ul>";
