@@ -115,6 +115,7 @@ function OnSearch(){
         }
     }
     result.innerHTML += "</ul>";
+    CreateTweetButton();
 }
 
 function CreateAuthorsBox(){
