@@ -31,7 +31,7 @@ function putDeck(){
 }
 
 function readParamToDeck(){
-    deck = getParam("deck").split(",");
+    if(getParam("deck") != null) deck = getParam("deck").split(",");
 }
 
 function getParam(name, url) {
