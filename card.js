@@ -121,7 +121,7 @@ function OnSearch(){
         html += `<a href="images/${card.name}.png" data-lightbox="cards" title="${card.display()}"><img src="images/${card.name}.png" width=195 height=270 class=card-img title=${card.name}></a> `;
         if(isDeck === false){
             html += `<div class="card-info">`;
-            html += `<audio src="audios/PA_LOVER-赤く漲る会津-.wav" controls><p>サポートされていません。</P></audio>`;
+            html += `<audio src="audios/PA_LOVER-赤く漲る会津-.wav" controls preload="auto" muted=true><p>サポートされていません。</P></audio>`;
             html += `</div>`;
         }
         html += `</div>`;
