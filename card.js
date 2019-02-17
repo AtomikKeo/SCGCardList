@@ -97,8 +97,8 @@ function OnSearch(){
         var card = cards[idx];
         if(isMonster === false && card.ToType() === "MonsterCard") continue;
         if(isSpell === false && card.ToType() === "Card") continue;
-        if(checkedAuthors.indexOf(card.author) == -1) continue;        
-        if(card.ToString().match(word)){
+        if(checkedAuthors.indexOf(card.author) == -1) continue;
+        if(card.ToString().match(word) && card.id <= 10000){
             var html = "";
             html += `<div class="card">`;
             html += `<a href="images/${card.name}.png" data-lightbox="cards" title="${card.display()}"><img src="images/${card.name}.png" width=195 height=270 class=card-img title=${card.name}></a> `;
@@ -113,6 +113,20 @@ function OnSearch(){
             
             result.innerHTML += html;
         }
+    }
+    if(word == "今日のカードゲーム"){
+        card = IDtoCard(10001);
+        var html = "";
+        html += `<div class="card">`;
+        html += `<a href="images/${card.name}.png" data-lightbox="cards" title="${card.display()}"><img src="images/${card.name}.png" width=195 height=270 class=card-img title=${card.name}></a> `;
+        if(isDeck === false){
+            html += `<div class="card-info">`;
+            html += `<audio src="audios/PA_LOVER-赤く漲る会津-.wav" controls><p>サポートされていません。</P></audio>`;
+            html += `</div>`;
+        }
+        html += `</div>`;
+        
+        result.innerHTML += html;
     }
     result.innerHTML += "</ul>";
     CreateTweetButton();
