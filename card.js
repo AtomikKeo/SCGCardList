@@ -101,13 +101,15 @@ function OnSearch(){
         if(card.ToString().match(word) && card.id <= 10000){
             var html = "";
             html += `<div class="card">`;
-            html += `<a href="images/${card.name}.png" data-lightbox="cards" title="${card.display()}"><img src="images/${card.name}.png" width=195 height=270 class=card-img title=${card.name}></a> `;
+            html += `<a href="images/${card.name}.png" data-lightbox="cards" title="${card.display()}"><img src="dummy.png" data-src="images/${card.name}.png" width=195 height=270 class="card-img lazyload" title=${card.name}></a> `;
             if(isDeck === false){
                 html += `<div class="card-info">`;
                 html += `<span class="addcard" onclick="AddCard('${card.id}');"></span>`
                 html += `<span class="remcard" onclick="RemoveCard('${card.id}');"></span>`
                 html += `<span id="${card.id}_num" class="cardNum">${CountCard(card.id)}</span>`
                 html += `</div>`;
+            }else{
+                $(".card").css("height","300px");
             }
             html += `</div>`;
             
@@ -118,7 +120,7 @@ function OnSearch(){
         card = IDtoCard(10001);
         var html = "";
         html += `<div class="card">`;
-        html += `<a href="images/${card.name}.png" data-lightbox="cards" title="${card.display()}"><img src="images/${card.name}.png" width=195 height=270 class=card-img title=${card.name}></a> `;
+        html += `<a href="images/${card.name}.png" data-lightbox="cards" title="${card.display()}"><img src="dummy.png" data-src="images/${card.name}.png" width=195 height=270 class="card-img lazyload" title=${card.name}></a> `;
         if(isDeck === false){
             html += `<div class="card-info">`;
             html += `<audio src="audios/PA_LOVER-赤く漲る会津-.wav" controls preload="auto" muted=true><p>サポートされていません。</P></audio>`;
