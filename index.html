@@ -32,16 +32,16 @@
         <option value="name">名前順</option>
         <option value="atk">ATK順</option>
         <option value="def">DEF順</label>
-        <option value="date">日付順</label>
+        <option value="date" selected>日付順</label>
     </select>
     <span class="ordercb">
-            <input type="checkbox" name="ordercb" id="ordercb" checked="checkbox" onchange="OnSearch();"><label for="ordercb"></label>
+            <input type="checkbox" name="ordercb" id="ordercb" checked=false onchange="OnSearch();"><label for="ordercb"></label>
     </span>
     </p>
     <p>
     <div class="cb">
-        <input type="checkbox" name="isMonster" id="isMonster" checked="checkbox" onchange="OnSearch();"><label for="isMonster">モンスターを表示</label>
-        <input type="checkbox" name="isSpell" id="isSpell" checked="checked" onchange="OnSearch();"><label for="isSpell">魔法カードを表示</label>
+        <input type="checkbox" name="isMonster" id="isMonster" checked=true onchange="OnSearch();"><label for="isMonster">モンスターを表示</label>
+        <input type="checkbox" name="isSpell" id="isSpell" checked=true onchange="OnSearch();"><label for="isSpell">魔法カードを表示</label>
         <input type="checkbox" name="isDeck" id="isDeck" onchange="OnSearch();"><label for="isDeck">デッキ表示</label>
         <span id="tweetBtn"></span>
     </div>
