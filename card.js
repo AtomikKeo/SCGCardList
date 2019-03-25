@@ -41,7 +41,23 @@ function SetDateOrder(card1, card2){
     return 0;
 }
 
-function checkAll(value){
+function IDtoPackName(id){
+    if(HellResidence.indexOf(id) >= 0){
+        return "魔界レジデンス";
+    }else if(Ryu.indexOf(id) >= 0){
+        return "りゅう";
+    }else{
+        return "無印";
+    }
+}
+
+function setAllCheckboxOfPacksTo(value){
+    for(var i=0;i<packData.length;i++){
+        document.getElementById(packData[i]).checked = value;
+    }
+}
+
+function setAllCheckboxOfAuthorsTo(value){
     for(var author in authors){
         document.getElementById(author).checked = value;
     }
@@ -54,8 +70,11 @@ function OnSearch(){
     isMonster = document.getElementById("isMonster").checked;
     isSpell = document.getElementById("isSpell").checked;
     isDeck = document.getElementById("isDeck").checked;
+    
     cards = [];
     checkedAuthors = [];
+    checkedPacks = [];
+    //デッキ表示分岐
     if(isDeck === false){
         cards = cardlist.concat();
     }else{
@@ -64,12 +83,22 @@ function OnSearch(){
         }
     }
 
+    //作者チェックリスト
     for(var author in authors){
         authorCheckbox = document.getElementById(author).checked;
         if(authorCheckbox)checkedAuthors.push(author);
     }
+    //パックチェックリスト
+    for(var i=0;i<packData.length;i++){
+        pack = packData[i];
+        packCheckbox = document.getElementById(pack).checked;
+        if(packCheckbox)checkedPacks.push(pack);
+    }
+
     result = document.getElementById("result");
     result.innerHTML = "<ul>";
+
+    //表示順
     switch (param){
         case "name":
             cards.sort(SetNameOrder);
@@ -87,8 +116,11 @@ function OnSearch(){
             cards.sort();
             break;
     }
+
+    //各種フィルタリング
     for(var i=0;i<cards.length;i++){
         var idx;
+        //逆順
         if(order){
             idx = cards.length - (i + 1);
         }else{
@@ -97,6 +129,7 @@ function OnSearch(){
         var card = cards[idx];
         if(isMonster === false && card.ToType() === "MonsterCard") continue;
         if(isSpell === false && card.ToType() === "Card") continue;
+        if(checkedPacks.indexOf(IDtoPackName(card.id)) == -1) continue;
         if(checkedAuthors.indexOf(card.author) == -1) continue;
         if(card.ToString().match(word) && card.id <= 10000){
             var html = "";
@@ -152,6 +185,15 @@ function CreateAuthorsBox(){
         author = keys[i];
         var html = `<input type="checkbox" id="${author}" checked=true onchange="OnSearch();"><label for="${author}">${author}(${authors[author]})</label>`;
         authorsDiv.innerHTML += html;
+    }
+}
+
+function CreatePacksBox(){
+    var packsDiv = document.getElementById("packs");
+    for(var i=0;i<packData.length;i++){
+        pack = packData[i];
+        var html = `<input type="checkbox" id="${pack}" checked=true onchange="OnSearch();"><label for="${pack}">${pack}パックを表示</label>`;
+        packsDiv.innerHTML += html;
     }
 }
 

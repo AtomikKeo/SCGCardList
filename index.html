@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="card.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type = "text/javascript" src = "card.js"></script>
     <script type = "text/javascript" src = "cardlist.js"></script>
+    <script type = "text/javascript" src = "card.js"></script>
     <script type = "text/javascript" src = "deck.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox-plus-jquery.min.js" type="text/javascript"></script>
@@ -22,7 +22,7 @@
     </script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </head>
-<body onload="readParamToDeck();CreateAuthorsBox();OnSearch()">
+<body onload="readParamToDeck();CreatePacksBox();CreateAuthorsBox();OnSearch()">
     <main>
     <h1>今日のカードゲーム</h1>
     <p>
@@ -37,6 +37,12 @@
     <span class="ordercb">
             <input type="checkbox" name="ordercb" id="ordercb" checked=false onchange="OnSearch();"><label for="ordercb"></label>
     </span>
+    <select name="limitDisplayed" id="limitDisplayed" onchange="OnSearch();">
+        <option value="10">10件</option>
+        <option value="30">30件</option>
+        <option value="100" selected>100件</option>
+        <option value="300">300件</label>
+    </select>
     </p>
     <p>
     <div class="cb">
@@ -46,12 +52,21 @@
         <span id="tweetBtn"></span>
     </div>
     </p>
+    
+    <fieldset>
+        <legend>カードパック</legend>
+        <input type="submit" value="全てチェック" onclick="setAllCheckboxOfPacksTo(true);OnSearch()"/>
+        <input type="submit" value="全てチェック解除" onclick="setAllCheckboxOfPacksTo(false);OnSearch()"/>
+        <div id="packs" class="cb">
+        </div>
+    </fieldset>
+
     <fieldset>
         <legend>作者</legend>
-        <input type="submit" value="全てチェック" onclick="checkAll(true);OnSearch()"/>
-        <input type="submit" value="全てチェック解除" onclick="checkAll(false);OnSearch()"/>
+        <input type="submit" value="全てチェック" onclick="setAllCheckboxOfAuthorsTo(true);OnSearch()"/>
+        <input type="submit" value="全てチェック解除" onclick="setAllCheckboxOfAuthorsTo(false);OnSearch()"/>
         <div id="authors" class="cb"></div>
-        </fieldset>
+    </fieldset>
     <div id="result" class=center></div>
 
     </main>
